@@ -7,39 +7,29 @@ package task02;
 
 public class Distributor implements Runnable {
 
-    String fizz = "Fizz";
-    String buzz = "Buzz";
-    String fizzBuzz = "FizzBuzz";
     String[] array;
+    int from;
+    int to;
 
-    public Distributor(String[] array) {
+    public Distributor(String[] array, int from, int to) {
         this.array = array;
+        this.from = from;
+        this.to = to;
     }
 
     @Override
     public void run() {
-        for (int f = 0; f < array.length; f++) {
+        for (int f = from; f < to; f++) {
             if (f % 5 == 0 && f % 3 == 0) {
-                array[f] = fizzBuzz;
+                this.array[f] = "FizzBuzz";
             } else if (f % 3 == 0) {
-                array[f] = fizz;
+                this.array[f] = "Fizz";
             } else if (f % 5 == 0) {
-                array[f] = buzz;
+                this.array[f] = "Buzz";
             } else {
-                array[f] = Integer.toString(f);
+                this.array[f] = Integer.toString(f);
             }
-        }
-    }
-
-    public void printArray() {
-        // added Thread.sleep because the first elements of the array were printed with null
-        try {
-            Thread.sleep(1_000);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        for (String h : array) {
-            System.out.println(h);
+            System.out.println(this.array[f]);
         }
     }
 }

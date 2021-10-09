@@ -1,7 +1,6 @@
 package task01;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 /**
@@ -13,7 +12,7 @@ public class Main {
 
     public static void main(String[] args) {
 
-        List<Integer> numberList = Collections.synchronizedList(new ArrayList<>());
+        List<Integer> numberList = new ArrayList<>();
 
         Writer w = new Writer(numberList);
         Reader r = new Reader(numberList);
